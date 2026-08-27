@@ -1,0 +1,18 @@
+[
+    {
+        "timestamp": "24 Aug 2026, 11:41 PM",
+        "goal": "check there is an electrical hazard",
+        "decision": "HAZARD",
+        "finding": "The light switch is visibly burned and electrical wires are exposed.",
+        "evidence": "The light switch is visibly burned and electrical wires are visibly exposed.",
+        "guidance": "Avoid contact with the damaged electrical component and have it inspected."
+    },
+    {
+        "timestamp": "24 Aug 2026, 11:45 PM",
+        "goal": "check there is any slip hazard",
+        "decision": "HAZARD",
+        "finding": "Water is visibly present on the walking surface.",
+        "evidence": "Water is visibly present on the tiled floor.",
+        "guidance": "Clear the spilled material and dry the floor before use."
+    }
+]
