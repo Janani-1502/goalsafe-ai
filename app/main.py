@@ -79,13 +79,12 @@ render_html("""
 
 .main .block-container {
     max-width: 1500px;
-
     padding-top: 8px !important;
     padding-bottom: 60px;
-
     padding-left: 15px !important;
     padding-right: 40px !important;
 }
+
 
 /* =======================================================
    SIDEBAR
@@ -136,11 +135,9 @@ section[data-testid="stSidebar"] > div {
 
 .side-label {
     margin: 20px 14px 9px;
-
     color: #A78BFA;
     font-size: 11px;
     font-weight: 700;
-
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -156,16 +153,12 @@ section[data-testid="stSidebar"] .stButton {
 section[data-testid="stSidebar"] .stButton > button {
     width: 100% !important;
     min-height: 48px !important;
-
     margin: 3px 0 !important;
     padding: 0 14px !important;
-
     border-radius: 10px !important;
     border: 1px solid transparent !important;
-
     font-size: 14px !important;
     font-weight: 500 !important;
-
     justify-content: flex-start !important;
     text-align: left !important;
 }
@@ -230,6 +223,7 @@ button[data-testid="stBaseButton-primary"] {
 .greeting .name {
     color: #A855F7;
 }
+
 .header-subtitle {
     margin-top: 6px;
     color: #A3A0B5;
@@ -245,18 +239,14 @@ button[data-testid="stBaseButton-primary"] {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
-
     margin-top: 34px;
     margin-bottom: 38px;
 }
 
 .stat-card {
     min-height: 140px;
-
     padding: 25px;
-
     background: rgba(18,17,32,0.78);
-
     border: 1px solid rgba(139,92,246,0.18);
     border-radius: 18px;
 }
@@ -268,9 +258,7 @@ button[data-testid="stBaseButton-primary"] {
 
 .stat-number {
     margin-top: 10px;
-
     color: #A855F7;
-
     font-size: 36px;
     font-weight: 800;
 }
@@ -296,7 +284,6 @@ button[data-testid="stBaseButton-primary"] {
 
 .section-title {
     margin: 10px 0 16px;
-
     font-size: 21px;
     font-weight: 800;
 }
@@ -304,9 +291,7 @@ button[data-testid="stBaseButton-primary"] {
 .assessment-card {
     padding: 20px 22px;
     margin-bottom: 12px;
-
     background: rgba(10,9,19,0.70);
-
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 14px;
 }
@@ -325,7 +310,6 @@ button[data-testid="stBaseButton-primary"] {
 
 .assessment-status {
     margin-top: 10px;
-
     color: #A855F7;
     font-size: 13px;
     font-weight: 600;
@@ -339,14 +323,10 @@ button[data-testid="stBaseButton-primary"] {
 .stepper {
     display: flex;
     align-items: center;
-
     gap: 12px;
-
     padding: 18px 22px;
     margin: 28px 0 25px;
-
     background: rgba(18,17,32,0.78);
-
     border: 1px solid rgba(139,92,246,0.17);
     border-radius: 18px;
 }
@@ -354,14 +334,10 @@ button[data-testid="stBaseButton-primary"] {
 .step {
     display: flex;
     align-items: center;
-
     gap: 9px;
-
     color: #6F6C82;
-
     font-size: 14px;
     font-weight: 600;
-
     flex: 1;
 }
 
@@ -373,11 +349,8 @@ button[data-testid="stBaseButton-primary"] {
     width: 34px;
     height: 34px;
     min-width: 34px;
-
     border-radius: 50%;
-
     border: 1px solid #6F6C82;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -385,13 +358,11 @@ button[data-testid="stBaseButton-primary"] {
 
 .step.active .step-number {
     border: none;
-
     background: linear-gradient(
         135deg,
         #A855F7,
         #6D28D9
     );
-
     color: white;
 }
 
@@ -407,14 +378,10 @@ button[data-testid="stBaseButton-primary"] {
 
 .input-card {
     min-height: 115px;
-
     padding: 22px;
-
     background: rgba(18,17,32,0.78);
-
     border: 1px solid rgba(139,92,246,0.18);
     border-radius: 18px;
-
     margin-bottom: 14px;
 }
 
@@ -425,7 +392,6 @@ button[data-testid="stBaseButton-primary"] {
 
 .input-description {
     margin-top: 7px;
-
     color: #77738A;
     font-size: 13px;
     line-height: 1.5;
@@ -438,11 +404,8 @@ button[data-testid="stBaseButton-primary"] {
 
 [data-testid="stFileUploader"] {
     border: 1.5px dashed rgba(139,92,246,0.45);
-
     border-radius: 13px;
-
     background: rgba(7,6,13,0.55);
-
     padding: 12px;
 }
 
@@ -452,48 +415,62 @@ button[data-testid="stBaseButton-primary"] {
 
 
 /* =======================================================
+   IMAGE DISPLAY
+   ======================================================= */
+
+[data-testid="stImage"] img {
+    width: 100 %!important;
+    height: 280px !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    display: block !important;
+    margin: 0 auto !important;
+    border-radius: 10px !important;
+}
+
+.image-preview {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.image-caption {
+    color: #77738A;
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+
+/* =======================================================
    TEXT AREA
    ======================================================= */
 
 textarea {
     background: #0B0A14 !important;
-
     color: #F5F4F8 !important;
-
     border: 1px solid rgba(139,92,246,0.25) !important;
-
     border-radius: 12px !important;
 }
 
 textarea:focus {
     border-color: #8B5CF6 !important;
-
     box-shadow:
         0 0 0 1px #8B5CF6 !important;
 }
 
 
 /* =======================================================
-   ASSESS BUTTON
+   BUTTONS
    ======================================================= */
-
-.assess-button-container {
-    margin-top: 12px;
-}
-
-
-/* All normal main buttons */
 
 .main .stButton > button {
     border-radius: 11px !important;
-
     font-weight: 700 !important;
 }
 
-
-/* Assess button */
-
-.assess-button-container + div .stButton > button,
 button[kind="primary"] {
     background: linear-gradient(
         135deg,
@@ -524,7 +501,6 @@ button[kind="primary"]:hover {
 
 .result-title {
     margin: 30px 0 15px;
-
     font-size: 21px;
     font-weight: 800;
 }
@@ -532,16 +508,11 @@ button[kind="primary"]:hover {
 .result-banner {
     display: flex;
     align-items: center;
-
     gap: 18px;
-
     padding: 20px;
-
     margin-bottom: 20px;
-
     border: 1px solid rgba(139,92,246,0.35);
     border-radius: 15px;
-
     background:
         linear-gradient(
             135deg,
@@ -554,70 +525,57 @@ button[kind="primary"]:hover {
     width: 56px;
     height: 56px;
     min-width: 56px;
-
     border-radius: 50%;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: rgba(124,58,237,0.18);
-
     border: 1px solid #8B5CF6;
-
     font-size: 27px;
 }
 
 .result-heading {
     color: #A855F7;
-
     font-size: 21px;
     font-weight: 800;
 }
 
 .result-description {
     margin-top: 6px;
-
     color: #F5F4F8;
-
     font-size: 14px;
     line-height: 1.55;
 }
 
 .result-card {
     min-height: 190px;
-
     padding: 20px;
-
     background: rgba(10,9,19,0.65);
-
     border: 1px solid rgba(255,255,255,0.07);
-
     border-radius: 14px;
 }
 
 .result-card-title {
     margin-bottom: 14px;
-
     color: #F5F4F8;
-
     font-size: 16px;
     font-weight: 700;
 }
 
 .result-text {
     color: #A3A0B5;
-
     font-size: 14px;
-
     line-height: 1.65;
 }
 
+
+/* =======================================================
+   FOOTER
+   ======================================================= */
+
 .footer-note {
     margin-top: 20px;
-
     color: #6F6C82;
-
     font-size: 11px;
 }
 
@@ -677,6 +635,7 @@ with st.sidebar:
     </div>
     """)
 
+
     # Home
     if st.button(
         "🏠  Home",
@@ -688,8 +647,10 @@ with st.sidebar:
             else "secondary"
         ),
     ):
+
         st.session_state.current_page = "Home"
         st.rerun()
+
 
     # New Assessment
     if st.button(
@@ -702,6 +663,7 @@ with st.sidebar:
             else "secondary"
         ),
     ):
+
         st.session_state.current_page = "New Assessment"
 
         st.session_state.assessment_result = None
@@ -715,6 +677,7 @@ with st.sidebar:
 
         st.rerun()
 
+
     # History
     if st.button(
         "📋  Assessment History",
@@ -726,8 +689,10 @@ with st.sidebar:
             else "secondary"
         ),
     ):
+
         st.session_state.current_page = "Assessment History"
         st.rerun()
+
 
     # Overview
     if st.button(
@@ -740,6 +705,7 @@ with st.sidebar:
             else "secondary"
         ),
     ):
+
         st.session_state.current_page = "Overview"
         st.rerun()
 
@@ -762,6 +728,7 @@ if st.session_state.current_page == "Overview":
 
     safe = total - hazards
 
+
     render_html("""
     <div class="greeting">
         Overview
@@ -772,10 +739,12 @@ if st.session_state.current_page == "Overview":
     </div>
     """)
 
+
     render_html(f"""
     <div class="home-stats">
 
         <div class="stat-card">
+
             <div class="stat-title">
                 Total Assessments
             </div>
@@ -787,10 +756,12 @@ if st.session_state.current_page == "Overview":
             <div class="stat-sub">
                 All time
             </div>
+
         </div>
 
 
         <div class="stat-card">
+
             <div class="stat-title">
                 Hazards Found
             </div>
@@ -802,10 +773,12 @@ if st.session_state.current_page == "Overview":
             <div class="stat-sub">
                 Detected hazards
             </div>
+
         </div>
 
 
         <div class="stat-card">
+
             <div class="stat-title">
                 Safe Scenes
             </div>
@@ -817,10 +790,12 @@ if st.session_state.current_page == "Overview":
             <div class="stat-sub">
                 No relevant hazard
             </div>
+
         </div>
 
     </div>
     """)
+
 
     if total == 0:
 
@@ -885,7 +860,9 @@ if st.session_state.current_page == "Assessment History":
     </div>
     """)
 
+
     history = st.session_state.assessment_history
+
 
     if not history:
 
@@ -908,10 +885,48 @@ if st.session_state.current_page == "Assessment History":
 
         for item in reversed(history):
 
-            if item.get("decision") == "NO_HAZARD":
+            is_safe = (
+                item.get("decision") == "NO_HAZARD"
+            )
+
+            if is_safe:
+
                 status = "✓ No Relevant Hazard"
+
+                finding = "No relevant hazard detected."
+
+                evidence = (
+                    "No clearly visible hazardous condition "
+                    "relevant to the user's safety goal was "
+                    "verified from the image."
+                )
+
+                guidance = (
+                    "No corrective action is indicated based "
+                    "on the visible evidence."
+                )
+
             else:
+
                 status = "⚠ Potential Hazard Detected"
+
+                finding = (
+                    item.get("result")
+                    or "A visible unsafe condition was detected."
+                )
+
+                evidence = (
+                    item.get("evidence")
+                    or finding
+                )
+
+                guidance = (
+                    item.get("guidance")
+                    or
+                    "Address the visible unsafe condition "
+                    "before normal use."
+                )
+
 
             render_html(f"""
             <div class="assessment-card">
@@ -933,12 +948,12 @@ if st.session_state.current_page == "Assessment History":
                 <div class="result-text">
 
                     <b>Finding:</b>
-                    {html.escape(item["result"])}
+                    {html.escape(finding)}
 
                     <br><br>
 
                     <b>Guidance:</b>
-                    {html.escape(item["guidance"])}
+                    {html.escape(guidance)}
 
                 </div>
 
@@ -966,7 +981,7 @@ if st.session_state.current_page == "Home":
 
     safe = total - hazards
 
-    # Header
+
     render_html("""
     <div class="greeting">
         Hi, <span class="name"> Janani</span> 👋
@@ -977,7 +992,7 @@ if st.session_state.current_page == "Home":
     </div>
     """)
 
-    # Statistics
+
     render_html(f"""
     <div class="home-stats">
 
@@ -1034,12 +1049,13 @@ if st.session_state.current_page == "Home":
     </div>
     """)
 
-    # Recent assessments
+
     render_html("""
     <div class="section-title">
         Recent Assessments
     </div>
     """)
+
 
     if not history:
 
@@ -1066,6 +1082,7 @@ if st.session_state.current_page == "Home":
             else:
                 status = "⚠ Potential Hazard"
 
+
             render_html(f"""
             <div class="assessment-card">
 
@@ -1083,6 +1100,7 @@ if st.session_state.current_page == "Home":
 
             </div>
             """)
+
 
     render_html("""
     <div class="footer-note">
@@ -1108,6 +1126,7 @@ render_html("""
     Start a new GoalSafe AI visual safety assessment
 </div>
 """)
+
 
 # =========================================================
 # STEPPER
@@ -1145,6 +1164,7 @@ render_html("""
 </div>
 """)
 
+
 # =========================================================
 # INPUT AREA
 # =========================================================
@@ -1175,6 +1195,7 @@ with left:
     </div>
     """)
 
+
     uploaded_image = st.file_uploader(
         "Upload Scene",
         type=["jpg", "jpeg", "png", "webp"],
@@ -1182,13 +1203,14 @@ with left:
         key=f"scene_{st.session_state.assessment_reset}",
     )
 
+
     if uploaded_image is not None:
 
         image = Image.open(uploaded_image)
 
         st.image(
             image,
-            width="stretch"
+            width=360,
         )
 
         size_mb = uploaded_image.size / (1024 * 1024)
@@ -1218,6 +1240,7 @@ with right:
     </div>
     """)
 
+
     user_goal = st.text_area(
         "Safety Concern / Goal",
 
@@ -1232,6 +1255,7 @@ with right:
 
         key=f"goal_{st.session_state.assessment_reset}",
     )
+
 
     assess_button = st.button(
         "✦  Assess Safety",
@@ -1293,38 +1317,72 @@ if assess_button:
                     assessment_image
                 )
 
-                # Save completed assessment once
+
+                # =================================================
+                # SAVE COMPLETED ASSESSMENT
+                # =================================================
+
                 if not st.session_state.assessment_saved:
 
-                    finding = (
-                        getattr(
-                            result,
-                            "condition_description",
-                            None
-                        )
-                        or getattr(
-                            result,
-                            "goal_relevant_fact",
-                            None
-                        )
-                        or getattr(
-                            result,
-                            "finding",
-                            None
-                        )
-                        or "No relevant hazard detected."
-                    )
+                    if decision == "NO_HAZARD":
 
-                    guidance = (
-                        getattr(
-                            result,
-                            "guidance",
-                            None
+                        finding = (
+                            "No relevant hazard detected."
                         )
-                        or
-                        "No corrective action is indicated "
-                        "based on the visible evidence."
-                    )
+
+                        evidence = (
+                            "No clearly visible hazardous "
+                            "condition relevant to the user's "
+                            "safety goal was verified from the image."
+                        )
+
+                        guidance = (
+                            "No corrective action is indicated "
+                            "based on the visible evidence."
+                        )
+
+                    else:
+
+                        finding = (
+                            getattr(
+                                result,
+                                "condition_description",
+                                None
+                            )
+                            or getattr(
+                                result,
+                                "goal_relevant_fact",
+                                None
+                            )
+                            or getattr(
+                                result,
+                                "finding",
+                                None
+                            )
+                            or
+                            "A visible unsafe condition was detected."
+                        )
+
+                        evidence = (
+                            getattr(
+                                result,
+                                "evidence",
+                                None
+                            )
+                            or finding
+                        )
+
+                        guidance = (
+                            getattr(
+                                result,
+                                "guidance",
+                                None
+                            )
+                            or
+                            "Address the visible unsafe condition "
+                            "before normal use."
+                        )
+
 
                     st.session_state.assessment_history.append(
                         {
@@ -1336,14 +1394,7 @@ if assess_button:
 
                             "result": finding,
 
-                            "evidence": (
-                                getattr(
-                                    result,
-                                    "evidence",
-                                    None
-                                )
-                                or finding
-                            ),
+                            "evidence": evidence,
 
                             "guidance": guidance,
 
@@ -1352,6 +1403,7 @@ if assess_button:
                     )
 
                     st.session_state.assessment_saved = True
+
 
         except Exception as error:
 
@@ -1374,6 +1426,7 @@ if st.session_state.assessment_result:
 
     result_image = st.session_state.assessment_image
 
+
     finding_text = (
         getattr(
             result,
@@ -1392,6 +1445,7 @@ if st.session_state.assessment_result:
         )
         or "No relevant hazard detected."
     )
+
 
     evidence_text = (
         getattr(
@@ -1412,12 +1466,14 @@ if st.session_state.assessment_result:
         or "No visible evidence was identified."
     )
 
+
     guidance_text = (
         st.session_state.assessment_guidance
         or
         "No corrective action is indicated based "
         "on the visible evidence."
     )
+
 
     condition_text = (
         getattr(
@@ -1430,9 +1486,9 @@ if st.session_state.assessment_result:
     )
 
 
-    # -----------------------------------------------------
+    # =====================================================
     # STATUS
-    # -----------------------------------------------------
+    # =====================================================
 
     if decision == "NO_HAZARD":
 
@@ -1445,9 +1501,9 @@ if st.session_state.assessment_result:
         result_icon = "⚠"
 
 
-    # -----------------------------------------------------
+    # =====================================================
     # RESULT HEADER
-    # -----------------------------------------------------
+    # =====================================================
 
     render_html(f"""
     <div class="result-title">
@@ -1476,9 +1532,9 @@ if st.session_state.assessment_result:
     """)
 
 
-    # -----------------------------------------------------
+    # =====================================================
     # RESULT CARDS
-    # -----------------------------------------------------
+    # =====================================================
 
     finding_col, evidence_col, guidance_col = st.columns(
         [1, 1.15, 1],
@@ -1486,7 +1542,10 @@ if st.session_state.assessment_result:
     )
 
 
-    # Finding
+    # =====================================================
+    # FINDING
+    # =====================================================
+
     with finding_col:
 
         render_html(f"""
@@ -1504,7 +1563,10 @@ if st.session_state.assessment_result:
         """)
 
 
-    # Evidence
+    # =====================================================
+    # EVIDENCE
+    # =====================================================
+
     with evidence_col:
 
         render_html(f"""
@@ -1521,15 +1583,19 @@ if st.session_state.assessment_result:
         </div>
         """)
 
+
         if result_image is not None:
 
             st.image(
                 result_image,
-                width="stretch"
+                width=360,
             )
 
 
-    # Guidance
+    # =====================================================
+    # GUIDANCE
+    # =====================================================
+
     with guidance_col:
 
         render_html(f"""
