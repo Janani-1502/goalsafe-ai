@@ -1,8 +1,12 @@
+import os
 from typing import Optional
 
-import ollama
+from dotenv import load_dotenv
+from google import genai
+from google.genai import types
 from pydantic import BaseModel, ValidationError
 
+load_dotenv()
 
 # ============================================================
 # STRUCTURED ASSESSMENT
@@ -590,39 +594,54 @@ Return only valid JSON matching the supplied schema.
 
 
 # ============================================================
-# MESSAGE BUILDER
+# MIME TYPE DETECTION
 # ============================================================
 
-def _build_messages(
+def _get_mime_type(image_bytes: bytes) -> str:
+
+    if image_bytes.startswith(b"\xFF\xD8\xFF"):
+        return "image/jpeg"
+
+    if image_bytes.startswith(b"\x89PNG"):
+        return "image/png"
+
+    if image_bytes.startswith(b"RIFF") and b"WEBP" in image_bytes[:16]:
+        return "image/webp"
+
+    return "image/jpeg"
+
+
+# ============================================================
+# GEMINI MESSAGE BUILDER
+# ============================================================
+
+def _build_gemini_contents(
     goal: str,
     image_bytes: bytes,
-) -> list[dict]:
+) -> list:
+
+    mime_type = _get_mime_type(image_bytes)
+
+    image_part = types.Part.from_bytes(
+        data=image_bytes,
+        mime_type=mime_type,
+    )
+
+    user_prompt = (
+        f'USER SAFETY GOAL:\n"{goal}"\n\n'
+        "Analyze the image according to this goal.\n\n"
+        "IMPORTANT:\n"
+        "If the goal is electrical safety, inspect the "
+        "electrical equipment first.\n\n"
+        "If electrical equipment is visibly associated "
+        "with water or a wet surface, select "
+        "ELECTRICAL_ABNORMALITY rather than SPILL.\n\n"
+        "Return only the required JSON object."
+    )
 
     return [
-        {
-            "role": "system",
-            "content": SYSTEM_PROMPT,
-        },
-        {
-            "role": "user",
-            "content": (
-                f'USER SAFETY GOAL:\n"{goal}"\n\n'
-
-                "Analyze the image according to this goal.\n\n"
-
-                "IMPORTANT:\n"
-
-                "If the goal is electrical safety, inspect the "
-                "electrical equipment first.\n\n"
-
-                "If electrical equipment is visibly associated "
-                "with water or a wet surface, select "
-                "ELECTRICAL_ABNORMALITY rather than SPILL.\n\n"
-
-                "Return only the required JSON object."
-            ),
-            "images": [image_bytes],
-        },
+        image_part,
+        user_prompt,
     ]
 
 
@@ -638,31 +657,44 @@ def assess_image(
 
     last_error: Optional[Exception] = None
 
+    # --------------------------------------------------------
+    # GEMINI CLIENT
+    # --------------------------------------------------------
+
+    api_key = os.getenv("GEMINI_API_KEY")
+
+    if not api_key:
+        raise RuntimeError(
+            "GEMINI_API_KEY is not configured."
+        )
+
+    client = genai.Client(
+        api_key=api_key
+    )
+
     for _ in range(retries + 1):
 
         try:
 
             # ------------------------------------------------
-            # GEMMA VISION
+            # GEMINI VISION
             # ------------------------------------------------
 
-            response = ollama.chat(
-                model="gemma3:4b",
-
-                messages=_build_messages(
+            response = client.models.generate_content(
+                model="gemini-3.1-flash-lite",
+                contents=_build_gemini_contents(
                     goal,
                     image_bytes,
                 ),
-
-                format=HazardAssessment.model_json_schema(),
-
-                options={
-                    "temperature": 0.1,
-                    "num_ctx": 4096,
-                },
+                config=types.GenerateContentConfig(
+                    system_instruction=SYSTEM_PROMPT,
+                    response_mime_type="application/json",
+                    response_schema=HazardAssessment,
+                    temperature=0.1,
+                ),
             )
 
-            raw = response["message"]["content"]
+            raw = response.text
 
             # ------------------------------------------------
             # VALIDATE
@@ -711,7 +743,6 @@ def assess_image(
         ).strip()
 
         # ====================================================
-        # IMPORTANT:
         # PYTHON CHECKS THE ACTUAL VISUAL EVIDENCE
         # ====================================================
 
@@ -727,14 +758,12 @@ def assess_image(
 
         # ====================================================
         # ELECTRICAL OVERRIDE
-        #
-        # THIS IS THE KEY FIX
         # ====================================================
 
         if electrical_goal:
 
             # Case 1:
-            # Gemma returned SPILL but its own evidence contains
+            # Gemini returned SPILL but its evidence contains
             # electrical equipment and water.
 
             if (
@@ -771,7 +800,7 @@ def assess_image(
                 result.evidence_sufficient = True
 
             # Case 2:
-            # Gemma already correctly returned an electrical
+            # Gemini already correctly returned an electrical
             # condition.
 
             elif (
