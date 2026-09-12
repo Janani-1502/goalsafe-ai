@@ -631,7 +631,7 @@ with st.sidebar:
     </div>
 
     <div class="side-label">
-        MENUS
+        MENU
     </div>
     """)
 
