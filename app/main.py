@@ -1,6 +1,7 @@
 import html
 import io
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import streamlit as st
 from PIL import Image
@@ -1386,7 +1387,9 @@ if assess_button:
 
                     st.session_state.assessment_history.append(
                         {
-                            "timestamp": datetime.now().strftime(
+                            "timestamp": datetime.now(
+                                 ZoneInfo("Asia/Kolkata")
+                            ).strftime(
                                 "%d %b %Y, %I:%M %p"
                             ),
 
